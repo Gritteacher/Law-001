@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ข้อสอบรัฐธรรมนูญ พ.ศ. 2560</title>
+  <title>แบบทดสอบ เรื่อง รัฐธรรมนูญ พ.ศ. 2560</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -15,57 +15,131 @@
     body {
       margin: 0;
       font-family: 'Sarabun', sans-serif;
-      background: linear-gradient(135deg, #e8f5e9, #ffffff);
+      background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 45%, #ecfdf5 100%);
       color: #1f2937;
     }
 
     header {
-      background: linear-gradient(135deg, #0f766e, #16a34a);
+      background: linear-gradient(135deg, #047857, #16a34a);
       color: white;
-      padding: 32px 20px;
+      padding: 42px 20px 38px;
       text-align: center;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.16);
     }
 
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 30px;
+      line-height: 1.35;
       font-weight: 700;
     }
 
     header p {
-      margin: 8px 0 0;
-      font-size: 16px;
+      margin: 10px 0 0;
+      font-size: 17px;
       opacity: 0.95;
     }
 
     .container {
-      max-width: 1000px;
-      margin: 24px auto;
-      padding: 0 16px 40px;
+      max-width: 980px;
+      margin: 28px auto;
+      padding: 0 16px 50px;
     }
 
     .info-box {
       background: #ffffff;
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 20px rgba(15, 118, 110, 0.12);
-      border-left: 6px solid #16a34a;
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 26px rgba(15, 118, 110, 0.13);
+      border-left: 8px solid #16a34a;
     }
 
     .info-box h2 {
-      margin: 0 0 8px;
-      font-size: 20px;
+      margin: 0 0 10px;
+      font-size: 24px;
       color: #047857;
     }
 
-    .question-card {
-      background: white;
-      border-radius: 18px;
+    .info-box p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 34px 0;
+    }
+
+    button {
+      font-family: 'Sarabun', sans-serif;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .start-btn,
+    .check-btn {
+      background: linear-gradient(135deg, #16a34a, #047857);
+      color: white;
+      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.28);
+    }
+
+    .start-btn:hover,
+    .check-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(22, 163, 74, 0.36);
+    }
+
+    .reset-btn {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .reset-btn:hover {
+      background: #d1d5db;
+    }
+
+    .result-panel {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #ffffff;
+      border-radius: 22px;
       padding: 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.13);
+      display: none;
+      border-top: 7px solid #16a34a;
+    }
+
+    .result-score {
+      font-size: 28px;
+      font-weight: 700;
+      color: #047857;
+      margin-bottom: 6px;
+    }
+
+    .result-detail {
+      font-size: 17px;
+      color: #374151;
+      line-height: 1.7;
+    }
+
+    .question-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 22px;
       margin-bottom: 18px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
       border: 2px solid transparent;
       transition: 0.2s;
     }
@@ -85,17 +159,20 @@
       font-size: 18px;
       margin-bottom: 14px;
       color: #111827;
+      line-height: 1.6;
     }
 
     .choice {
       display: block;
-      padding: 12px 14px;
-      margin: 8px 0;
-      border-radius: 12px;
+      padding: 13px 15px;
+      margin: 9px 0;
+      border-radius: 14px;
       background: #f9fafb;
       border: 1px solid #e5e7eb;
       cursor: pointer;
       transition: 0.15s;
+      line-height: 1.6;
+      font-size: 16px;
     }
 
     .choice:hover {
@@ -110,108 +187,80 @@
 
     .answer-box {
       display: none;
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 12px;
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 14px;
       background: #ffffff;
       border: 1px dashed #94a3b8;
-      font-size: 15px;
+      font-size: 15.5px;
+      line-height: 1.7;
     }
 
     .answer-box strong {
       color: #047857;
     }
 
-    .result-panel {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: white;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-      display: none;
-      border-top: 6px solid #16a34a;
-    }
-
-    .result-score {
-      font-size: 26px;
-      font-weight: 700;
-      color: #047857;
-      margin-bottom: 4px;
-    }
-
-    .result-detail {
-      font-size: 16px;
-      color: #374151;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 28px 0;
-    }
-
-    button {
-      font-family: 'Sarabun', sans-serif;
-      border: none;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .check-btn {
-      background: linear-gradient(135deg, #16a34a, #0f766e);
-      color: white;
-      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
-    }
-
-    .check-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);
-    }
-
-    .reset-btn {
-      background: #e5e7eb;
-      color: #111827;
-    }
-
-    .reset-btn:hover {
-      background: #d1d5db;
-    }
-
     .warning {
       color: #dc2626;
       text-align: center;
-      font-weight: 600;
+      font-weight: 700;
       display: none;
       margin-top: 12px;
+      font-size: 16px;
+    }
+
+    .hidden {
+      display: none;
     }
 
     footer {
       text-align: center;
-      padding: 24px;
+      padding: 28px 16px 36px;
       color: #6b7280;
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.8;
     }
 
     @media (max-width: 600px) {
+      header {
+        padding: 36px 16px 32px;
+      }
+
       header h1 {
+        font-size: 24px;
+      }
+
+      header p {
+        font-size: 15px;
+      }
+
+      .info-box {
+        padding: 22px;
+      }
+
+      .info-box h2 {
         font-size: 22px;
+      }
+
+      .info-box p {
+        font-size: 16px;
       }
 
       .question-title {
         font-size: 16px;
       }
 
+      .choice {
+        font-size: 15px;
+      }
+
       .result-score {
-        font-size: 22px;
+        font-size: 23px;
+      }
+
+      button {
+        width: 100%;
+        max-width: 280px;
       }
     }
   </style>
@@ -226,7 +275,10 @@
   <main class="container">
     <section class="info-box">
       <h2>คำชี้แจง</h2>
-      <p>ให้นักเรียนเลือกคำตอบที่ถูกต้องที่สุดเพียงข้อเดียว เมื่อตอบครบแล้วกดปุ่ม “ตรวจคำตอบ” ระบบจะแสดงคะแนน ข้อที่ถูก/ผิด และเฉลยทันที</p>
+      <p>
+        ให้นักเรียนเลือกคำตอบที่ถูกต้องที่สุดเพียงข้อเดียว เมื่อตอบครบแล้วกดปุ่ม
+        “ตรวจคำตอบ” ระบบจะแสดงคะแนน ข้อที่ถูก/ผิด และเฉลยทันที
+      </p>
     </section>
 
     <section id="resultPanel" class="result-panel">
@@ -234,14 +286,18 @@
       <div id="scoreDetail" class="result-detail"></div>
     </section>
 
+    <div class="buttons" id="startBox">
+      <button type="button" class="start-btn" onclick="startQuiz()">ทำแบบทดสอบ</button>
+    </div>
+
     <form id="quizForm">
-      <div id="quizContainer"></div>
+      <div id="quizContainer" class="hidden"></div>
 
       <div class="warning" id="warningText">
         กรุณาตอบคำถามให้ครบทุกข้อก่อนตรวจคำตอบ
       </div>
 
-      <div class="buttons">
+      <div class="buttons hidden" id="quizButtons">
         <button type="button" class="check-btn" onclick="checkAnswers()">ตรวจคำตอบ</button>
         <button type="button" class="reset-btn" onclick="resetQuiz()">ล้างคำตอบ</button>
       </div>
@@ -249,7 +305,9 @@
   </main>
 
   <footer>
-    จัดทำเพื่อใช้ประกอบการเรียนการสอนรายวิชาสังคมศึกษา
+    จัดทำเพื่อใช้ประกอบการเรียนการสอนรายวิชาสังคมศึกษา<br>
+    โดย ครูกฤษณพล ทองอุ่น<br>
+    โรงเรียนเทพศิรินทร์ นนทบุรี
   </footer>
 
   <script>
@@ -597,11 +655,12 @@
         card.id = `question-${index}`;
 
         let choicesHTML = "";
+
         item.choices.forEach((choice, choiceIndex) => {
           choicesHTML += `
             <label class="choice">
               <input type="radio" name="q${index}" value="${choiceIndex}">
-              ${choice}
+              ${getChoiceLetter(choiceIndex)}. ${choice}
             </label>
           `;
         });
@@ -624,57 +683,31 @@
       return letters[index];
     }
 
+    function startQuiz() {
+      document.getElementById("quizContainer").classList.remove("hidden");
+      document.getElementById("quizButtons").classList.remove("hidden");
+      document.getElementById("startBox").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("quizContainer").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 100);
+    }
+
     function checkAnswers() {
       let score = 0;
       let answeredCount = 0;
 
       questions.forEach((item, index) => {
         const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selected) answeredCount++;
+        if (selected) {
+          answeredCount++;
+        }
       });
 
       if (answeredCount < questions.length) {
         document.getElementById("warningText").style.display = "block";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
-      }
 
-      document.getElementById("warningText").style.display = "none";
-
-      questions.forEach((item, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        const card = document.getElementById(`question-${index}`);
-        const answerBox = document.getElementById(`answer-${index}`);
-
-        card.classList.remove("correct", "incorrect");
-
-        if (Number(selected.value) === item.answer) {
-          score++;
-          card.classList.add("correct");
-        } else {
-          card.classList.add("incorrect");
-        }
-
-        answerBox.style.display = "block";
-      });
-
-      const percent = ((score / questions.length) * 100).toFixed(2);
-
-      document.getElementById("resultPanel").style.display = "block";
-      document.getElementById("scoreText").innerHTML = `ได้คะแนน ${score} / ${questions.length} คะแนน`;
-      document.getElementById("scoreDetail").innerHTML = `คิดเป็น ${percent}%`;
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function resetQuiz() {
-      document.getElementById("quizForm").reset();
-      document.getElementById("resultPanel").style.display = "none";
-      document.getElementById("warningText").style.display = "none";
-
-      questions.forEach((item, index) => {
-        document.getElementById(`question-${index}`).classList.remove("correct", "incorrect");
-        document.getElementById(`answer-${index}`).style.display = "none";
-      });
-
-      window.s
+  
