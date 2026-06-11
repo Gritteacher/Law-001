@@ -4,69 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>แบบทดสอบ เรื่อง รัฐธรรมนูญ พ.ศ. 2560</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Sarabun', sans-serif;
-      background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 45%, #ecfdf5 100%);
+      background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 42%, #ecfdf5 100%);
       color: #1f2937;
     }
-
     header {
       background: linear-gradient(135deg, #047857, #16a34a);
       color: white;
-      padding: 42px 20px 38px;
+      padding: 44px 18px 38px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.16);
+      box-shadow: 0 4px 22px rgba(0,0,0,0.16);
     }
-
     header h1 {
       margin: 0;
-      font-size: 30px;
+      font-size: clamp(24px, 4vw, 34px);
       line-height: 1.35;
       font-weight: 700;
     }
-
     header p {
       margin: 10px 0 0;
-      font-size: 17px;
-      opacity: 0.95;
+      font-size: clamp(15px, 2vw, 18px);
+      opacity: .96;
     }
-
     .container {
       max-width: 980px;
       margin: 28px auto;
-      padding: 0 16px 50px;
+      padding: 0 16px 52px;
     }
-
     .info-box {
-      background: #ffffff;
+      background: #fff;
       border-radius: 24px;
       padding: 24px;
       margin-bottom: 22px;
-      box-shadow: 0 8px 26px rgba(15, 118, 110, 0.13);
+      box-shadow: 0 8px 26px rgba(15,118,110,.13);
       border-left: 8px solid #16a34a;
     }
-
     .info-box h2 {
       margin: 0 0 10px;
       font-size: 24px;
       color: #047857;
     }
-
     .info-box p {
       margin: 0;
       font-size: 17px;
       line-height: 1.8;
     }
-
     .buttons {
       display: flex;
       gap: 14px;
@@ -74,7 +62,6 @@
       justify-content: center;
       margin: 34px 0;
     }
-
     button {
       font-family: 'Sarabun', sans-serif;
       border: none;
@@ -83,85 +70,66 @@
       font-size: 17px;
       font-weight: 700;
       cursor: pointer;
-      transition: 0.2s;
+      transition: .2s;
     }
-
-    .start-btn,
-    .check-btn {
+    .start-btn, .check-btn {
       background: linear-gradient(135deg, #16a34a, #047857);
       color: white;
-      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.28);
+      box-shadow: 0 8px 18px rgba(22,163,74,.28);
     }
-
-    .start-btn:hover,
-    .check-btn:hover {
+    .start-btn:hover, .check-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(22, 163, 74, 0.36);
+      box-shadow: 0 10px 24px rgba(22,163,74,.36);
     }
-
     .reset-btn {
       background: #e5e7eb;
       color: #111827;
     }
-
-    .reset-btn:hover {
-      background: #d1d5db;
-    }
-
+    .reset-btn:hover { background: #d1d5db; }
+    #quizContainer, #quizButtons { display: none; }
     .result-panel {
-      position: sticky;
-      top: 0;
-      z-index: 20;
       background: #ffffff;
       border-radius: 22px;
       padding: 20px;
       margin-bottom: 22px;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.13);
+      box-shadow: 0 8px 26px rgba(0,0,0,.13);
       display: none;
       border-top: 7px solid #16a34a;
     }
-
     .result-score {
       font-size: 28px;
       font-weight: 700;
       color: #047857;
       margin-bottom: 6px;
     }
-
     .result-detail {
       font-size: 17px;
       color: #374151;
       line-height: 1.7;
     }
-
     .question-card {
       background: #ffffff;
       border-radius: 22px;
       padding: 22px;
       margin-bottom: 18px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 5px 18px rgba(0,0,0,.08);
       border: 2px solid transparent;
-      transition: 0.2s;
     }
-
     .question-card.correct {
       border-color: #22c55e;
       background: #f0fdf4;
     }
-
     .question-card.incorrect {
       border-color: #ef4444;
       background: #fef2f2;
     }
-
     .question-title {
       font-weight: 700;
       font-size: 18px;
       margin-bottom: 14px;
       color: #111827;
-      line-height: 1.6;
+      line-height: 1.65;
     }
-
     .choice {
       display: block;
       padding: 13px 15px;
@@ -170,21 +138,17 @@
       background: #f9fafb;
       border: 1px solid #e5e7eb;
       cursor: pointer;
-      transition: 0.15s;
       line-height: 1.6;
       font-size: 16px;
     }
-
     .choice:hover {
       background: #ecfdf5;
       border-color: #34d399;
     }
-
     .choice input {
       margin-right: 8px;
       transform: scale(1.15);
     }
-
     .answer-box {
       display: none;
       margin-top: 15px;
@@ -193,13 +157,9 @@
       background: #ffffff;
       border: 1px dashed #94a3b8;
       font-size: 15.5px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
-
-    .answer-box strong {
-      color: #047857;
-    }
-
+    .answer-box strong { color: #047857; }
     .warning {
       color: #dc2626;
       text-align: center;
@@ -208,64 +168,25 @@
       margin-top: 12px;
       font-size: 16px;
     }
-
-    .hidden {
-      display: none;
-    }
-
     footer {
       text-align: center;
-      padding: 28px 16px 36px;
+      padding: 28px 16px 38px;
       color: #6b7280;
       font-size: 15px;
       line-height: 1.8;
     }
-
     @media (max-width: 600px) {
-      header {
-        padding: 36px 16px 32px;
-      }
-
-      header h1 {
-        font-size: 24px;
-      }
-
-      header p {
-        font-size: 15px;
-      }
-
-      .info-box {
-        padding: 22px;
-      }
-
-      .info-box h2 {
-        font-size: 22px;
-      }
-
-      .info-box p {
-        font-size: 16px;
-      }
-
-      .question-title {
-        font-size: 16px;
-      }
-
-      .choice {
-        font-size: 15px;
-      }
-
-      .result-score {
-        font-size: 23px;
-      }
-
-      button {
-        width: 100%;
-        max-width: 280px;
-      }
+      .info-box { padding: 20px; }
+      .info-box h2 { font-size: 21px; }
+      .info-box p { font-size: 15.5px; }
+      .question-card { padding: 18px; }
+      .question-title { font-size: 16px; }
+      .choice { font-size: 15px; }
+      .result-score { font-size: 23px; }
+      button { width: 100%; max-width: 300px; }
     }
   </style>
 </head>
-
 <body>
   <header>
     <h1>แบบทดสอบ เรื่อง รัฐธรรมนูญ พ.ศ. 2560</h1>
@@ -291,13 +212,9 @@
     </div>
 
     <form id="quizForm">
-      <div id="quizContainer" class="hidden"></div>
-
-      <div class="warning" id="warningText">
-        กรุณาตอบคำถามให้ครบทุกข้อก่อนตรวจคำตอบ
-      </div>
-
-      <div class="buttons hidden" id="quizButtons">
+      <div id="quizContainer"></div>
+      <div class="warning" id="warningText">กรุณาตอบคำถามให้ครบทุกข้อก่อนตรวจคำตอบ</div>
+      <div class="buttons" id="quizButtons">
         <button type="button" class="check-btn" onclick="checkAnswers()">ตรวจคำตอบ</button>
         <button type="button" class="reset-btn" onclick="resetQuiz()">ล้างคำตอบ</button>
       </div>
@@ -314,331 +231,181 @@
     const questions = [
       {
         question: "รัฐธรรมนูญมีความสำคัญต่อการปกครองประเทศอย่างไร",
-        choices: [
-          "เป็นกฎหมายทั่วไปที่ใช้เฉพาะประชาชน",
-          "เป็นกฎหมายสูงสุดที่กำหนดโครงสร้างการปกครองประเทศ",
-          "เป็นระเบียบของฝ่ายบริหารเท่านั้น",
-          "เป็นข้อตกลงของพรรคการเมือง"
-        ],
+        choices: ["เป็นกฎหมายทั่วไปที่ใช้เฉพาะประชาชน", "เป็นกฎหมายสูงสุดที่กำหนดโครงสร้างการปกครองประเทศ", "เป็นระเบียบของฝ่ายบริหารเท่านั้น", "เป็นข้อตกลงของพรรคการเมือง"],
         answer: 1,
         explanation: "รัฐธรรมนูญเป็นกฎหมายสูงสุดของประเทศ กำหนดรูปแบบการปกครอง โครงสร้างอำนาจรัฐ และรับรองสิทธิเสรีภาพของประชาชน"
       },
       {
         question: "รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. 2560 ประกาศใช้เมื่อใด",
-        choices: [
-          "6 เมษายน 2560",
-          "24 มิถุนายน 2560",
-          "10 ธันวาคม 2560",
-          "13 ตุลาคม 2560"
-        ],
+        choices: ["6 เมษายน 2560", "24 มิถุนายน 2560", "10 ธันวาคม 2560", "13 ตุลาคม 2560"],
         answer: 0,
         explanation: "รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. 2560 ประกาศใช้เมื่อวันที่ 6 เมษายน 2560"
       },
       {
         question: "ตามรัฐธรรมนูญ พ.ศ. 2560 ประเทศไทยมีรูปแบบการปกครองแบบใด",
-        choices: [
-          "สาธารณรัฐ",
-          "สมบูรณาญาสิทธิราชย์",
-          "ประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุข",
-          "เผด็จการรัฐสภา"
-        ],
+        choices: ["สาธารณรัฐ", "สมบูรณาญาสิทธิราชย์", "ประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุข", "เผด็จการรัฐสภา"],
         answer: 2,
         explanation: "ประเทศไทยปกครองในระบอบประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุข"
       },
       {
         question: "ข้อใดกล่าวถูกต้องเกี่ยวกับอำนาจอธิปไตยตามรัฐธรรมนูญ",
-        choices: [
-          "เป็นของรัฐบาล",
-          "เป็นของรัฐสภาเท่านั้น",
-          "เป็นของปวงชนชาวไทย",
-          "เป็นของศาลรัฐธรรมนูญ"
-        ],
+        choices: ["เป็นของรัฐบาล", "เป็นของรัฐสภาเท่านั้น", "เป็นของปวงชนชาวไทย", "เป็นของศาลรัฐธรรมนูญ"],
         answer: 2,
         explanation: "อำนาจอธิปไตยเป็นของปวงชนชาวไทย และใช้อำนาจผ่านองค์กรตามรัฐธรรมนูญ"
       },
       {
         question: "ข้อใดเป็นลักษณะสำคัญของรัฐธรรมนูญ",
-        choices: [
-          "แก้ไขไม่ได้เลย",
-          "มีฐานะเป็นกฎหมายสูงสุดของประเทศ",
-          "ใช้บังคับเฉพาะเจ้าหน้าที่รัฐ",
-          "เป็นกฎหมายที่ออกโดยกระทรวง"
-        ],
+        choices: ["แก้ไขไม่ได้เลย", "มีฐานะเป็นกฎหมายสูงสุดของประเทศ", "ใช้บังคับเฉพาะเจ้าหน้าที่รัฐ", "เป็นกฎหมายที่ออกโดยกระทรวง"],
         answer: 1,
         explanation: "รัฐธรรมนูญเป็นกฎหมายสูงสุด กฎหมายอื่นจะขัดหรือแย้งต่อรัฐธรรมนูญไม่ได้"
       },
       {
         question: "สิทธิและเสรีภาพของประชาชนตามรัฐธรรมนูญมีความหมายตรงกับข้อใดมากที่สุด",
-        choices: [
-          "ประชาชนสามารถทำสิ่งใดก็ได้โดยไม่มีข้อจำกัด",
-          "ประชาชนมีอำนาจเหนือรัฐทุกกรณี",
-          "ประชาชนมีหลักประกันในการดำรงชีวิตและแสดงความคิดเห็นภายใต้กฎหมาย",
-          "ประชาชนไม่ต้องปฏิบัติตามกฎหมาย"
-        ],
+        choices: ["ประชาชนสามารถทำสิ่งใดก็ได้โดยไม่มีข้อจำกัด", "ประชาชนมีอำนาจเหนือรัฐทุกกรณี", "ประชาชนมีหลักประกันในการดำรงชีวิตและแสดงความคิดเห็นภายใต้กฎหมาย", "ประชาชนไม่ต้องปฏิบัติตามกฎหมาย"],
         answer: 2,
         explanation: "สิทธิและเสรีภาพเป็นหลักประกันของประชาชน แต่ต้องใช้ภายใต้ขอบเขตของกฎหมายและไม่ละเมิดผู้อื่น"
       },
       {
         question: "ข้อใดเป็นตัวอย่างของสิทธิทางการเมืองของประชาชน",
-        choices: [
-          "การเลือกซื้อสินค้า",
-          "การเลือกตั้งผู้แทนราษฎร",
-          "การทำสัญญาซื้อขาย",
-          "การประกอบอาชีพส่วนตัว"
-        ],
+        choices: ["การเลือกซื้อสินค้า", "การเลือกตั้งผู้แทนราษฎร", "การทำสัญญาซื้อขาย", "การประกอบอาชีพส่วนตัว"],
         answer: 1,
         explanation: "การเลือกตั้งเป็นสิทธิทางการเมืองที่ประชาชนใช้ในการมีส่วนร่วมในการปกครองประเทศ"
       },
       {
         question: "ข้อใดเป็นหน้าที่ของปวงชนชาวไทยตามรัฐธรรมนูญ",
-        choices: [
-          "หลีกเลี่ยงการเสียภาษี",
-          "ไม่เข้าร่วมกิจกรรมของสังคม",
-          "ปฏิบัติตามกฎหมาย",
-          "ใช้สิทธิโดยไม่คำนึงถึงผู้อื่น"
-        ],
+        choices: ["หลีกเลี่ยงการเสียภาษี", "ไม่เข้าร่วมกิจกรรมของสังคม", "ปฏิบัติตามกฎหมาย", "ใช้สิทธิโดยไม่คำนึงถึงผู้อื่น"],
         answer: 2,
         explanation: "ประชาชนมีหน้าที่ปฏิบัติตามรัฐธรรมนูญและกฎหมายของประเทศ"
       },
       {
         question: "การใช้เสรีภาพในการแสดงความคิดเห็นควรคำนึงถึงสิ่งใดมากที่สุด",
-        choices: [
-          "ความพึงพอใจของตนเองเท่านั้น",
-          "สิทธิ เสรีภาพ และชื่อเสียงของผู้อื่น",
-          "การชนะการโต้แย้ง",
-          "การแสดงความคิดเห็นให้รุนแรงที่สุด"
-        ],
+        choices: ["ความพึงพอใจของตนเองเท่านั้น", "สิทธิ เสรีภาพ และชื่อเสียงของผู้อื่น", "การชนะการโต้แย้ง", "การแสดงความคิดเห็นให้รุนแรงที่สุด"],
         answer: 1,
         explanation: "เสรีภาพในการแสดงความคิดเห็นต้องไม่ละเมิดสิทธิ ชื่อเสียง และความสงบเรียบร้อยของสังคม"
       },
       {
         question: "หากประชาชนเข้าชื่อเสนอกฎหมายตามรัฐธรรมนูญ แสดงถึงหลักการใด",
-        choices: [
-          "การรวมศูนย์อำนาจ",
-          "การมีส่วนร่วมทางการเมืองของประชาชน",
-          "การใช้อำนาจตุลาการ",
-          "การใช้อำนาจของข้าราชการประจำ"
-        ],
+        choices: ["การรวมศูนย์อำนาจ", "การมีส่วนร่วมทางการเมืองของประชาชน", "การใช้อำนาจตุลาการ", "การใช้อำนาจของข้าราชการประจำ"],
         answer: 1,
         explanation: "การเข้าชื่อเสนอกฎหมายเป็นรูปแบบหนึ่งของการมีส่วนร่วมทางการเมืองของประชาชน"
       },
       {
         question: "อำนาจอธิปไตยตามหลักการแบ่งแยกอำนาจแบ่งออกเป็นกี่ฝ่ายหลัก",
-        choices: [
-          "2 ฝ่าย",
-          "3 ฝ่าย",
-          "4 ฝ่าย",
-          "5 ฝ่าย"
-        ],
+        choices: ["2 ฝ่าย", "3 ฝ่าย", "4 ฝ่าย", "5 ฝ่าย"],
         answer: 1,
         explanation: "อำนาจอธิปไตยแบ่งเป็น 3 ฝ่าย ได้แก่ นิติบัญญัติ บริหาร และตุลาการ"
       },
       {
         question: "ข้อใดไม่ใช่อำนาจหลักตามหลักการแบ่งแยกอำนาจ",
-        choices: [
-          "อำนาจนิติบัญญัติ",
-          "อำนาจบริหาร",
-          "อำนาจตุลาการ",
-          "อำนาจเศรษฐกิจ"
-        ],
+        choices: ["อำนาจนิติบัญญัติ", "อำนาจบริหาร", "อำนาจตุลาการ", "อำนาจเศรษฐกิจ"],
         answer: 3,
         explanation: "อำนาจเศรษฐกิจไม่ใช่อำนาจหลักตามหลักการแบ่งแยกอำนาจของรัฐ"
       },
       {
         question: "หน่วยงานใดใช้อำนาจนิติบัญญัติ",
-        choices: [
-          "คณะรัฐมนตรี",
-          "รัฐสภา",
-          "ศาลยุติธรรม",
-          "กระทรวงมหาดไทย"
-        ],
+        choices: ["คณะรัฐมนตรี", "รัฐสภา", "ศาลยุติธรรม", "กระทรวงมหาดไทย"],
         answer: 1,
         explanation: "รัฐสภาเป็นองค์กรหลักที่ใช้อำนาจนิติบัญญัติ มีหน้าที่พิจารณาและตรากฎหมาย"
       },
       {
         question: "รัฐสภาตามรัฐธรรมนูญประกอบด้วยองค์กรใด",
-        choices: [
-          "สภาผู้แทนราษฎรและวุฒิสภา",
-          "ศาลรัฐธรรมนูญและศาลยุติธรรม",
-          "คณะรัฐมนตรีและนายกรัฐมนตรี",
-          "กระทรวงและกรม"
-        ],
+        choices: ["สภาผู้แทนราษฎรและวุฒิสภา", "ศาลรัฐธรรมนูญและศาลยุติธรรม", "คณะรัฐมนตรีและนายกรัฐมนตรี", "กระทรวงและกรม"],
         answer: 0,
         explanation: "รัฐสภาประกอบด้วยสภาผู้แทนราษฎรและวุฒิสภา"
       },
       {
         question: "หน้าที่สำคัญของสภาผู้แทนราษฎรคือข้อใด",
-        choices: [
-          "พิจารณาคดีอาญา",
-          "ออกคำพิพากษาแทนศาล",
-          "พิจารณากฎหมายและควบคุมการบริหารราชการแผ่นดิน",
-          "แต่งตั้งข้าราชการทุกตำแหน่ง"
-        ],
+        choices: ["พิจารณาคดีอาญา", "ออกคำพิพากษาแทนศาล", "พิจารณากฎหมายและควบคุมการบริหารราชการแผ่นดิน", "แต่งตั้งข้าราชการทุกตำแหน่ง"],
         answer: 2,
         explanation: "สภาผู้แทนราษฎรมีหน้าที่ออกกฎหมายและตรวจสอบการทำงานของฝ่ายบริหาร"
       },
       {
         question: "คณะรัฐมนตรีใช้อำนาจใดเป็นหลัก",
-        choices: [
-          "อำนาจนิติบัญญัติ",
-          "อำนาจบริหาร",
-          "อำนาจตุลาการ",
-          "อำนาจตรวจเงินแผ่นดิน"
-        ],
+        choices: ["อำนาจนิติบัญญัติ", "อำนาจบริหาร", "อำนาจตุลาการ", "อำนาจตรวจเงินแผ่นดิน"],
         answer: 1,
         explanation: "คณะรัฐมนตรีเป็นองค์กรฝ่ายบริหาร มีหน้าที่บริหารราชการแผ่นดิน"
       },
       {
         question: "นายกรัฐมนตรีมีบทบาทสำคัญอย่างไร",
-        choices: [
-          "เป็นหัวหน้าฝ่ายบริหาร",
-          "เป็นประธานศาลรัฐธรรมนูญ",
-          "เป็นประธานรัฐสภาโดยตำแหน่ง",
-          "เป็นผู้พิพากษาสูงสุด"
-        ],
+        choices: ["เป็นหัวหน้าฝ่ายบริหาร", "เป็นประธานศาลรัฐธรรมนูญ", "เป็นประธานรัฐสภาโดยตำแหน่ง", "เป็นผู้พิพากษาสูงสุด"],
         answer: 0,
         explanation: "นายกรัฐมนตรีเป็นหัวหน้ารัฐบาลและหัวหน้าฝ่ายบริหาร"
       },
       {
         question: "อำนาจตุลาการมีหน้าที่สำคัญตรงกับข้อใด",
-        choices: [
-          "ออกกฎหมาย",
-          "บริหารราชการแผ่นดิน",
-          "พิจารณาพิพากษาคดีให้เป็นไปตามกฎหมาย",
-          "จัดทำนโยบายเศรษฐกิจ"
-        ],
+        choices: ["ออกกฎหมาย", "บริหารราชการแผ่นดิน", "พิจารณาพิพากษาคดีให้เป็นไปตามกฎหมาย", "จัดทำนโยบายเศรษฐกิจ"],
         answer: 2,
         explanation: "อำนาจตุลาการเป็นอำนาจของศาลในการพิจารณาพิพากษาคดีตามกฎหมาย"
       },
       {
         question: "ศาลรัฐธรรมนูญมีหน้าที่สำคัญตามข้อใด",
-        choices: [
-          "ตรวจสอบความชอบด้วยรัฐธรรมนูญของกฎหมาย",
-          "จัดการเลือกตั้งทั่วไป",
-          "ออกกฎหมายงบประมาณ",
-          "บริหารประเทศแทนนายกรัฐมนตรี"
-        ],
+        choices: ["ตรวจสอบความชอบด้วยรัฐธรรมนูญของกฎหมาย", "จัดการเลือกตั้งทั่วไป", "ออกกฎหมายงบประมาณ", "บริหารประเทศแทนนายกรัฐมนตรี"],
         answer: 0,
         explanation: "ศาลรัฐธรรมนูญมีหน้าที่วินิจฉัยว่ากฎหมายหรือการกระทำใดขัดหรือแย้งต่อรัฐธรรมนูญหรือไม่"
       },
       {
         question: "คณะกรรมการการเลือกตั้ง หรือ กกต. มีหน้าที่หลักเกี่ยวกับเรื่องใด",
-        choices: [
-          "การพิจารณาคดีอาญา",
-          "การจัดหรือควบคุมการเลือกตั้งให้เป็นไปโดยสุจริตและเที่ยงธรรม",
-          "การจัดเก็บภาษี",
-          "การแต่งตั้งรัฐมนตรี"
-        ],
+        choices: ["การพิจารณาคดีอาญา", "การจัดหรือควบคุมการเลือกตั้งให้เป็นไปโดยสุจริตและเที่ยงธรรม", "การจัดเก็บภาษี", "การแต่งตั้งรัฐมนตรี"],
         answer: 1,
         explanation: "กกต. มีหน้าที่จัดการ ควบคุม และกำกับดูแลการเลือกตั้งให้สุจริตและเที่ยงธรรม"
       },
       {
         question: "องค์กรอิสระตามรัฐธรรมนูญมีความสำคัญอย่างไร",
-        choices: [
-          "ช่วยตรวจสอบการใช้อำนาจรัฐ",
-          "ใช้อำนาจแทนประชาชนทุกเรื่อง",
-          "อยู่ภายใต้คำสั่งของพรรคการเมือง",
-          "ทำหน้าที่แทนศาลทุกประเภท"
-        ],
+        choices: ["ช่วยตรวจสอบการใช้อำนาจรัฐ", "ใช้อำนาจแทนประชาชนทุกเรื่อง", "อยู่ภายใต้คำสั่งของพรรคการเมือง", "ทำหน้าที่แทนศาลทุกประเภท"],
         answer: 0,
         explanation: "องค์กรอิสระมีบทบาทสำคัญในการตรวจสอบและถ่วงดุลการใช้อำนาจรัฐ"
       },
       {
         question: "การตรวจสอบถ่วงดุลอำนาจรัฐมีเป้าหมายสำคัญที่สุดคือข้อใด",
-        choices: [
-          "ทำให้รัฐบาลทำงานช้าลง",
-          "ป้องกันการใช้อำนาจโดยมิชอบ",
-          "ลดบทบาทของประชาชน",
-          "ทำให้ฝ่ายใดฝ่ายหนึ่งมีอำนาจสูงสุด"
-        ],
+        choices: ["ทำให้รัฐบาลทำงานช้าลง", "ป้องกันการใช้อำนาจโดยมิชอบ", "ลดบทบาทของประชาชน", "ทำให้ฝ่ายใดฝ่ายหนึ่งมีอำนาจสูงสุด"],
         answer: 1,
         explanation: "การถ่วงดุลอำนาจช่วยป้องกันไม่ให้ผู้มีอำนาจใช้อำนาจเกินขอบเขตหรือโดยมิชอบ"
       },
       {
         question: "ผู้ตรวจการแผ่นดินมีบทบาทเกี่ยวกับเรื่องใดมากที่สุด",
-        choices: [
-          "ตรวจสอบความเดือดร้อนหรือความไม่เป็นธรรมจากการใช้อำนาจรัฐ",
-          "บัญชาการกองทัพ",
-          "กำหนดอัตราภาษี",
-          "พิจารณาคดีแพ่ง"
-        ],
+        choices: ["ตรวจสอบความเดือดร้อนหรือความไม่เป็นธรรมจากการใช้อำนาจรัฐ", "บัญชาการกองทัพ", "กำหนดอัตราภาษี", "พิจารณาคดีแพ่ง"],
         answer: 0,
         explanation: "ผู้ตรวจการแผ่นดินมีหน้าที่พิจารณาเรื่องร้องเรียนเกี่ยวกับความไม่เป็นธรรมหรือการใช้อำนาจรัฐที่ไม่เหมาะสม"
       },
       {
         question: "คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ หรือ ป.ป.ช. เกี่ยวข้องกับข้อใดมากที่สุด",
-        choices: [
-          "การส่งเสริมการท่องเที่ยว",
-          "การตรวจสอบและป้องกันการทุจริตของเจ้าหน้าที่รัฐ",
-          "การจัดการศึกษา",
-          "การออกนโยบายการเงิน"
-        ],
+        choices: ["การส่งเสริมการท่องเที่ยว", "การตรวจสอบและป้องกันการทุจริตของเจ้าหน้าที่รัฐ", "การจัดการศึกษา", "การออกนโยบายการเงิน"],
         answer: 1,
         explanation: "ป.ป.ช. มีหน้าที่เกี่ยวกับการป้องกันและปราบปรามการทุจริต รวมถึงตรวจสอบเจ้าหน้าที่ของรัฐ"
       },
       {
         question: "หากนักเรียนพบว่ามีการซื้อเสียงในการเลือกตั้ง ควรปฏิบัติอย่างไร",
-        choices: [
-          "เงียบไว้เพราะไม่เกี่ยวกับตนเอง",
-          "แจ้งหน่วยงานที่เกี่ยวข้อง เช่น กกต.",
-          "รับเงินแล้วเลือกตามที่ตนเองต้องการ",
-          "โพสต์กล่าวหาโดยไม่มีหลักฐาน"
-        ],
+        choices: ["เงียบไว้เพราะไม่เกี่ยวกับตนเอง", "แจ้งหน่วยงานที่เกี่ยวข้อง เช่น กกต.", "รับเงินแล้วเลือกตามที่ตนเองต้องการ", "โพสต์กล่าวหาโดยไม่มีหลักฐาน"],
         answer: 1,
         explanation: "การซื้อเสียงเป็นการกระทำที่ผิดหลักประชาธิปไตย ควรแจ้งหน่วยงานที่เกี่ยวข้องพร้อมหลักฐาน"
       },
       {
         question: "ข้อใดสะท้อนการเป็นพลเมืองที่ดีตามรัฐธรรมนูญมากที่สุด",
-        choices: [
-          "ใช้สิทธิเลือกตั้งอย่างสุจริต",
-          "ไม่สนใจปัญหาสังคม",
-          "ละเมิดสิทธิผู้อื่นเพื่อประโยชน์ของตน",
-          "เชื่อข่าวทุกอย่างโดยไม่ตรวจสอบ"
-        ],
+        choices: ["ใช้สิทธิเลือกตั้งอย่างสุจริต", "ไม่สนใจปัญหาสังคม", "ละเมิดสิทธิผู้อื่นเพื่อประโยชน์ของตน", "เชื่อข่าวทุกอย่างโดยไม่ตรวจสอบ"],
         answer: 0,
         explanation: "การใช้สิทธิเลือกตั้งอย่างสุจริตเป็นการมีส่วนร่วมทางการเมืองและเป็นหน้าที่ของพลเมืองที่ดี"
       },
       {
         question: "หากประชาชนวิจารณ์การทำงานของรัฐบาลอย่างสุภาพและมีเหตุผล การกระทำนี้เกี่ยวข้องกับสิทธิใด",
-        choices: [
-          "สิทธิในทรัพย์สิน",
-          "เสรีภาพในการแสดงความคิดเห็น",
-          "สิทธิในการรักษาพยาบาล",
-          "เสรีภาพในการเดินทาง"
-        ],
+        choices: ["สิทธิในทรัพย์สิน", "เสรีภาพในการแสดงความคิดเห็น", "สิทธิในการรักษาพยาบาล", "เสรีภาพในการเดินทาง"],
         answer: 1,
         explanation: "การวิจารณ์อย่างสุภาพและมีเหตุผลเป็นการใช้เสรีภาพในการแสดงความคิดเห็นภายใต้กฎหมาย"
       },
       {
         question: "การที่รัฐธรรมนูญกำหนดให้มีองค์กรอิสระหลายองค์กร มีวัตถุประสงค์สำคัญเพื่ออะไร",
-        choices: [
-          "เพิ่มจำนวนหน่วยงานราชการ",
-          "ตรวจสอบและถ่วงดุลการใช้อำนาจรัฐ",
-          "ลดสิทธิของประชาชน",
-          "ทำให้การเลือกตั้งไม่จำเป็น"
-        ],
+        choices: ["เพิ่มจำนวนหน่วยงานราชการ", "ตรวจสอบและถ่วงดุลการใช้อำนาจรัฐ", "ลดสิทธิของประชาชน", "ทำให้การเลือกตั้งไม่จำเป็น"],
         answer: 1,
         explanation: "องค์กรอิสระถูกกำหนดขึ้นเพื่อช่วยตรวจสอบการใช้อำนาจรัฐและสร้างความโปร่งใส"
       },
       {
         question: "สถานการณ์ใดสะท้อนหลักนิติรัฐได้ดีที่สุด",
-        choices: [
-          "เจ้าหน้าที่รัฐใช้อำนาจตามใจตนเอง",
-          "ทุกคนต้องอยู่ภายใต้กฎหมายอย่างเสมอภาค",
-          "ผู้มีอำนาจไม่ต้องปฏิบัติตามกฎหมาย",
-          "ประชาชนไม่มีสิทธิตรวจสอบรัฐ"
-        ],
+        choices: ["เจ้าหน้าที่รัฐใช้อำนาจตามใจตนเอง", "ทุกคนต้องอยู่ภายใต้กฎหมายอย่างเสมอภาค", "ผู้มีอำนาจไม่ต้องปฏิบัติตามกฎหมาย", "ประชาชนไม่มีสิทธิตรวจสอบรัฐ"],
         answer: 1,
         explanation: "หลักนิติรัฐหมายถึงการที่ทุกคน รวมทั้งรัฐและเจ้าหน้าที่รัฐ ต้องอยู่ภายใต้กฎหมายอย่างเสมอภาค"
       },
       {
         question: "ข้อใดเป็นเป้าหมายสำคัญของรัฐธรรมนูญในระบอบประชาธิปไตย",
-        choices: [
-          "คุ้มครองสิทธิเสรีภาพของประชาชนและกำหนดขอบเขตอำนาจรัฐ",
-          "ให้อำนาจรัฐใช้อำนาจได้อย่างไม่มีข้อจำกัด",
-          "ยกเลิกการมีส่วนร่วมของประชาชน",
-          "ทำให้ประชาชนไม่สามารถตรวจสอบรัฐบาลได้"
-        ],
+        choices: ["คุ้มครองสิทธิเสรีภาพของประชาชนและกำหนดขอบเขตอำนาจรัฐ", "ให้อำนาจรัฐใช้อำนาจได้อย่างไม่มีข้อจำกัด", "ยกเลิกการมีส่วนร่วมของประชาชน", "ทำให้ประชาชนไม่สามารถตรวจสอบรัฐบาลได้"],
         answer: 0,
         explanation: "รัฐธรรมนูญในระบอบประชาธิปไตยมีเป้าหมายเพื่อคุ้มครองประชาชนและจำกัดการใช้อำนาจของรัฐ"
       }
@@ -646,16 +413,17 @@
 
     const quizContainer = document.getElementById("quizContainer");
 
+    function getChoiceLetter(index) {
+      return ["ก", "ข", "ค", "ง"][index];
+    }
+
     function renderQuiz() {
       quizContainer.innerHTML = "";
-
       questions.forEach((item, index) => {
         const card = document.createElement("div");
         card.className = "question-card";
         card.id = `question-${index}`;
-
         let choicesHTML = "";
-
         item.choices.forEach((choice, choiceIndex) => {
           choicesHTML += `
             <label class="choice">
@@ -664,7 +432,6 @@
             </label>
           `;
         });
-
         card.innerHTML = `
           <div class="question-title">${index + 1}. ${item.question}</div>
           ${choicesHTML}
@@ -673,26 +440,17 @@
             <div><strong>คำอธิบาย:</strong> ${item.explanation}</div>
           </div>
         `;
-
         quizContainer.appendChild(card);
       });
     }
 
-    function getChoiceLetter(index) {
-      const letters = ["ก", "ข", "ค", "ง"];
-      return letters[index];
-    }
-
     function startQuiz() {
-      document.getElementById("quizContainer").classList.remove("hidden");
-      document.getElementById("quizButtons").classList.remove("hidden");
+      document.getElementById("quizContainer").style.display = "block";
+      document.getElementById("quizButtons").style.display = "flex";
       document.getElementById("startBox").style.display = "none";
-
+      document.getElementById("resultPanel").style.display = "none";
       setTimeout(() => {
-        document.getElementById("quizContainer").scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+        document.getElementById("quizContainer").scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
     }
 
@@ -702,12 +460,67 @@
 
       questions.forEach((item, index) => {
         const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selected) {
-          answeredCount++;
-        }
+        if (selected) answeredCount++;
       });
 
       if (answeredCount < questions.length) {
         document.getElementById("warningText").style.display = "block";
+        const firstUnansweredIndex = questions.findIndex((item, index) => {
+          return !document.querySelector(`input[name="q${index}"]:checked`);
+        });
+        if (firstUnansweredIndex >= 0) {
+          document.getElementById(`question-${firstUnansweredIndex}`).scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return;
+      }
 
-  
+      document.getElementById("warningText").style.display = "none";
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`question-${index}`);
+        const answerBox = document.getElementById(`answer-${index}`);
+        card.classList.remove("correct", "incorrect");
+
+        if (Number(selected.value) === item.answer) {
+          score++;
+          card.classList.add("correct");
+        } else {
+          card.classList.add("incorrect");
+        }
+        answerBox.style.display = "block";
+      });
+
+      const percent = ((score / questions.length) * 100).toFixed(2);
+      let levelText = "";
+      if (percent >= 80) levelText = "ผลการประเมิน: ดีมาก";
+      else if (percent >= 70) levelText = "ผลการประเมิน: ดี";
+      else if (percent >= 60) levelText = "ผลการประเมิน: พอใช้";
+      else levelText = "ผลการประเมิน: ควรทบทวนเพิ่มเติม";
+
+      document.getElementById("resultPanel").style.display = "block";
+      document.getElementById("scoreText").innerHTML = `ได้คะแนน ${score} / ${questions.length} คะแนน`;
+      document.getElementById("scoreDetail").innerHTML = `คิดเป็น ${percent}%<br>${levelText}`;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetQuiz() {
+      document.getElementById("quizForm").reset();
+      document.getElementById("resultPanel").style.display = "none";
+      document.getElementById("warningText").style.display = "none";
+
+      questions.forEach((item, index) => {
+        document.getElementById(`question-${index}`).classList.remove("correct", "incorrect");
+        document.getElementById(`answer-${index}`).style.display = "none";
+      });
+
+      document.getElementById("quizContainer").style.display = "none";
+      document.getElementById("quizButtons").style.display = "none";
+      document.getElementById("startBox").style.display = "flex";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    renderQuiz();
+  </script>
+</body>
+</html>
